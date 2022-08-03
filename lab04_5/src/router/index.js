@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import EventDetails from "../views/EventDetailView.vue";
 
 const routes = [
   {
@@ -8,9 +9,16 @@ const routes = [
     component: HomeView,
     props: (route) => ({
       page: parseInt(route.query.page) || 1,
-      perPage: parseInt(route.query.perPage) || 3,
+      perPage: parseInt(route.query.perPage) || 5,
     }),
   },
+  {
+    path: "/passenger/:id",
+    name: "EventDetails",
+    component: EventDetails,
+    props: true,
+  },
+
   {
     path: "/about",
     name: "about",
