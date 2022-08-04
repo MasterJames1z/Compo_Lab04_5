@@ -1,13 +1,7 @@
 <template>
   <div v-if="passenger">
     <h1>{{ passenger.first_name }} on {{ passenger.last_name }}</h1>
-    <h3>{{ passenger.gender }}</h3>
-    <p>
-      {{ passenger.ip_address }} on {{ passenger.Source }} @
-      {{ passenger.Destination }}
-    </p>
     <p>{{ passenger.email }}</p>
-    <p>{{ passenger.travelDate }}</p>
   </div>
 </template>
 

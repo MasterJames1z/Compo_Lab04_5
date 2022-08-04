@@ -17,4 +17,7 @@ export default {
   getPassenger(id) {
     return apiClient.get("/passenger/" + id);
   },
+  getAirline(id) {
+    return apiClient.get("/airline/" + id);
+  },
 };
