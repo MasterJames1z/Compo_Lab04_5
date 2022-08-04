@@ -23,33 +23,33 @@ export default {
     EventService.getPassenger(this.id)
       .then((response) => {
         this.passenger = response.data;
-        console.log(this.passenger);
+        // console.log(this.passenger);
       })
       .catch((error) => {
-        console.log(error);
-        // if (error.response && error.response.status == 404) {
-        //   this.$router.push({
-        //     name: "404Resource",
-        //     params: { resource: "passenger" },
-        //   });
-        // } else {
-        //   this.$router.push({ name: "NetworkError" });
-        // }
+        // console.log(error);
+        if (error.response && error.response.status == 404) {
+          this.$router.push({
+            name: "404Resource",
+            params: { resource: "passenger" },
+          });
+        } else {
+          this.$router.push({ name: "NetworkError" });
+        }
       });
     EventService.getAirline(this.id)
       .then((response) => {
         this.airline = response.data;
       })
       .catch((error) => {
-        console.log(error);
-        // if (error.response && error.response.status == 404) {
-        //   this.$router.push({
-        //     name: "404Resource",
-        //     params: { resource: "airline" },
-        //   });
-        // } else {
-        //   this.$router.push({ name: "NetworkError" });
-        // }
+        // console.log(error);
+        if (error.response && error.response.status == 404) {
+          this.$router.push({
+            name: "404Resource",
+            params: { resource: "airline" },
+          });
+        } else {
+          this.$router.push({ name: "NetworkError" });
+        }
       });
   },
 };

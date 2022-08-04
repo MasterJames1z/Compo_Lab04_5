@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import EventDetails from "../views/event/EventDetail.vue";
 import EventAirline from "../views/event/EventAirline.vue";
 import EventLayout from "../views/event/EventLayoutView.vue";
+import NotFoundView from "../views/NotFoundView.vue";
 
 const routes = [
   {
@@ -45,6 +46,22 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/404/:resource",
+    name: "404Resource",
+    component: NotFoundView,
+    props: true,
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: NotFoundView,
+  },
+  // {
+  //   path: "/network-error",
+  //   name: "NetworkError",
+  //   component: NetWorkErrorView,
+  // },
 ];
 
 const router = createRouter({
