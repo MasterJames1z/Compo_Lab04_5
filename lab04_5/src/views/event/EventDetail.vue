@@ -8,10 +8,23 @@
     </p>
     <p>{{ passenger.travelDate }}</p>
   </div>
+  <button @click="detail">Update Data</button>
 </template>
 
 <script>
 export default {
-  props: ["passenger"],
+  props: ["passenger", "id"],
+  inject: ["GStore"],
+  methods: {
+    detail() {
+      this.$router.push({
+        name: "home",
+      });
+      this.GStore.flashMessage = "You are successfully update data";
+      setTimeout(() => {
+        this.GStore.flashMessage = "";
+      }, 3000);
+    },
+  },
 };
 </script>
