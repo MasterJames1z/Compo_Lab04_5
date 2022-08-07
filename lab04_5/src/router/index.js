@@ -4,6 +4,7 @@ import EventDetails from "../views/event/EventDetail.vue";
 import EventAirline from "../views/event/EventAirline.vue";
 import EventLayout from "../views/event/EventLayoutView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
+import NProgress from "nprogress";
 
 const routes = [
   {
@@ -68,5 +69,10 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
-
+router.beforeEach(() => {
+  NProgress.start();
+});
+router.afterEach(() => {
+  NProgress.done();
+});
 export default router;

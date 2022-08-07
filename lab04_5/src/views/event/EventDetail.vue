@@ -23,7 +23,7 @@ export default {
       this.GStore.flashMessage = "You are successfully update data";
       setTimeout(() => {
         this.GStore.flashMessage = "";
-      }, 3000);
+      }, 5000);
     },
   },
 };
