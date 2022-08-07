@@ -5,6 +5,8 @@ import EventAirline from "../views/event/EventAirline.vue";
 import EventLayout from "../views/event/EventLayoutView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import NProgress from "nprogress";
+import EventService from "../services/EventService";
+import GStore from "../store";
 
 const routes = [
   {
@@ -32,6 +34,40 @@ const routes = [
     name: "PassengerLayout",
     props: true,
     component: EventLayout,
+    beforeEnter: (to) => {
+      return (
+        EventService.getPassenger(to.params.id)
+          .then((response) => {
+            //Still need to set the data here
+            GStore.passenger = response.data;
+          })
+          .catch((error) => {
+            if (error.response && error.response.status == 404) {
+              return {
+                name: "404Resource",
+                params: { resource: "passenger" },
+              };
+            } else {
+              return { name: "NetworkError" };
+            }
+          }),
+        EventService.getAirline(to.params.id) //Return and params.id
+          .then((response) => {
+            //Still need to set the data here
+            GStore.airline = response.data;
+          })
+          .catch((error) => {
+            if (error.response && error.response.status == 404) {
+              return {
+                name: "404Resource",
+                params: { resource: "passenger" },
+              };
+            } else {
+              return { name: "NetworkError" };
+            }
+          })
+      );
+    },
     children: [
       {
         path: "passenger/:id",
